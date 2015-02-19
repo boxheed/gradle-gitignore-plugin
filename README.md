@@ -16,7 +16,7 @@ buildscript {
 		jcenter()
 	}
 	dependencies {
-	    //The pater build plugin.
+	    //The gitignore plugin.
 		classpath 'com.fizzpod:gradle-gitignore-plugin:1.0.0'
 	}
 }
