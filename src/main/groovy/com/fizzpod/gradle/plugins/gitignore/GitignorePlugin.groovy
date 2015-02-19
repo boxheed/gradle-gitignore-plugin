@@ -12,18 +12,20 @@ public class GitignorePlugin implements Plugin<Project> {
 	void apply(Project project) {
 		project.extensions.create("gitignore", GitignorePluginExtension);
 		project.task([group: 'gitignore'], 'writeGitignore') << {
-
-			new File(".gitignore").withWriter { out ->
-				project.gitignore.ignores.each { out.println it }
-			}
+			GitignoreFile gitignoreFile = new GitignoreFile();
+			LOGGER.info(".gitignore contents before writing: ");
+			LOGGER.info(gitignoreFile.getContents(project.getRootDir()));
+			gitignoreFile.writeContents(project.getRootDir(), project.gitignore.ignores);
+			LOGGER.info(".gitignore contents after writing: ");
+			LOGGER.info(gitignoreFile.getContents(project.getRootDir()));
 		}
 		
 		project.task([group: 'gitignore'], 'displayGitignore') << {
-			def gitignoreFile = new File(".gitignore");
-			if(gitignoreFile.exists()) {
-				println gitignoreFile.text;
+			String contents = new GitignoreFile().getContents(project.getRootDir());
+			if(contents) {
+				println contents;
 			} else {
-				println ".gitignore file does not exist";
+				println ".gitignore file is either empty or does not exist.";
 			}
 		}
 	}
