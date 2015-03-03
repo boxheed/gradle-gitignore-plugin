@@ -5,6 +5,7 @@ buildscript {
 	}
 	dependencies {
         classpath 'pl.allegro.tech.build:axion-release-plugin:1.2.0'
+		classpath 'net.saliman:gradle-cobertura-plugin:2.2.4'
     }
 }
 
@@ -12,7 +13,35 @@ apply plugin: 'groovy'
 apply plugin: 'java-gradle-plugin'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
+apply plugin: 'cobertura'
 apply plugin: 'pl.allegro.tech.build.axion-release'
+apply plugin: 'com.fizzpod.gitignore'
+
+
+sourceSets {
+    main {
+        java {
+            srcDir 'buildSrc/src/main/java'
+        }
+        resources {
+            srcDir 'buildSrc/src/main/resources'
+        }
+		groovy {
+		    srcDir 'buildSrc/src/main/groovy'
+		}
+	}
+	test {
+        java {
+            srcDir 'buildSrc/src/test/java'
+        }
+        resources {
+            srcDir 'buildSrc/src/test/resources'
+        }
+		groovy {
+		    srcDir 'buildSrc/src/test/groovy'
+		}
+	}
+}
 
 repositories {
 	mavenLocal()
@@ -29,6 +58,15 @@ scmVersion {
 group = 'com.fizzpod'
 version = scmVersion.version
 
+gitignore {
+	ignore '.gradle'
+	ignore '.classpath'
+	ignore '.project'
+	ignore '.settings'
+	ignore 'bin'
+	ignore 'build'
+	ignore 'release.gradle'
+}
 
 dependencies {
 	compile gradleApi()
