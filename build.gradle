@@ -64,3 +64,17 @@ bintray {
 		labels = ['gradle', 'plugin', 'git', 'build', 'gitignore']
 	}
 }
+
+pluginBundle {
+
+  description = 'Gradle plugin providing a way of configuring default gitignore values.'
+  tags = ['gradle', 'plugin', 'git', 'build', 'gitignore']
+
+  plugins {
+
+    plugin {
+      id = 'com.fizzpod.gitignore'
+      displayName = 'Gradle Gitignore plugin'
+    }
+  }
+}
