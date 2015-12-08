@@ -1,5 +1,7 @@
-[![Build Status](https://drone.io/github.com/boxheed/gradle-gitignore-plugin/status.png)](https://drone.io/github.com/boxheed/gradle-gitignore-plugin/latest)
-[ ![Download](https://api.bintray.com/packages/boxhead/gradle-plugins/gradle-gitignore-plugin/images/download.svg) ](https://bintray.com/boxhead/gradle-plugins/gradle-gitignore-plugin/_latestVersion)
+[![Build Status](https://api.shippable.com/projects/54eda7bc5ab6cc13528dbc5c/badge?branchName=master)](https://app.shippable.com/projects/54eda7bc5ab6cc13528dbc5c/builds/latest)
+
+[![Download](https://api.bintray.com/packages/boxhead/gradle-plugins/gradle-gitignore-plugin/images/download.svg) ](https://bintray.com/boxhead/gradle-plugins/gradle-gitignore-plugin/_latestVersion)
+
 
 # Gradle Gitignore Plugin
 Simple plugin that provides a task and configuration to write `.gitignore` file.
