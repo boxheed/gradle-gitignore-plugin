@@ -10,13 +10,14 @@ buildscript {
 		}
 	}
 	dependencies {
-			classpath ('com.fizzpod:gradle-plugin-opinion:2.0.1') {
+			classpath ('com.fizzpod:gradle-plugin-opinion:5.0.1') {
 				exclude group: 'com.fizzpod', module: 'gradle-gitignore-plugin'
 			}
     }
 }
 
 apply plugin: 'com.fizzpod.pater-build'
+apply from: 'buildSrc/build.gradle'
 
 sourceSets {
     main {
@@ -53,8 +54,8 @@ gitignore {
 }
 
 dependencies {
-	testCompile 'junit:junit:4.12'
-	testCompile 'org.mockito:mockito-all:1.10.19'
+	compile gradleApi()
+	compile localGroovy()
 }
 
 bintray {
