@@ -11,7 +11,7 @@ public class GitignorePlugin implements Plugin<Project> {
 
 	void apply(Project project) {
 		project.extensions.create("gitignore", GitignorePluginExtension);
-		project.task([group: 'gitignore'], 'writeGitignore') << {
+		project.task([group: 'gitignore'], 'writeGitignore').doLast {
 			GitignoreFile gitignoreFile = new GitignoreFile();
 			LOGGER.info(".gitignore contents before writing: ");
 			LOGGER.info(gitignoreFile.getContents(project.getRootDir()));
@@ -19,8 +19,8 @@ public class GitignorePlugin implements Plugin<Project> {
 			LOGGER.info(".gitignore contents after writing: ");
 			LOGGER.info(gitignoreFile.getContents(project.getRootDir()));
 		}
-		
-		project.task([group: 'gitignore'], 'displayGitignore') << {
+
+		project.task([group: 'gitignore'], 'displayGitignore').doLast {
 			String contents = new GitignoreFile().getContents(project.getRootDir());
 			if(contents) {
 				println contents;
