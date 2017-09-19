@@ -1,42 +1,44 @@
 package com.fizzpod.gradle.plugins.gitignore
 
-import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
 
+import static org.hamcrest.core.IsNull.nullValue
+import static org.hamcrest.text.IsEmptyString.isEmptyOrNullString
+import static org.hamcrest.text.StringContainsInOrder.stringContainsInOrder
+import static org.junit.Assert.assertThat
+
 class GitignoreFileTest {
 
 	@Rule
-	public TemporaryFolder folder= new TemporaryFolder();
-	
+	public TemporaryFolder folder= new TemporaryFolder()
+
 	@Test
-	public void testReadMissingGitignoreFile() {
-		def contents = new GitignoreFile().getContents(folder.root);
-		Assert.assertNull(contents);
+	void testReadMissingGitignoreFile() {
+		def contents = new GitignoreFile().getContents(folder.root)
+		assertThat(contents, nullValue())
 	}
 	
 	@Test
-	public void testReadEmptyGitignoreFile() {
-		writeGitignore();
-		String contents = new GitignoreFile().getContents(folder.root);
-		Assert.assertNotNull(contents);
-		Assert.assertEquals("", contents);
+	void testReadEmptyGitignoreFile() {
+		writeGitignore()
+		String contents = new GitignoreFile().getContents(folder.root)
+		assertThat(contents, isEmptyOrNullString())
 	}
 	
 	@Test
-	public void testReadGitignoreFileWithContent() {
-		writeGitignore("abc", "def");
-		def contents = new GitignoreFile().getContents(folder.root);
-		Assert.assertNotNull(contents);
-		Assert.assertEquals("abc" + System.lineSeparator + "def" + System.lineSeparator, contents);
+	void testReadGitignoreFileWithContent() {
+		writeGitignore("abc", "def")
+		def contents = new GitignoreFile().getContents(folder.root)
+		assertThat(contents, stringContainsInOrder(Arrays.asList("abc", "def")))
 	}
 	
 	@Test
-	public void writeGitignoreFile() {
-		new GitignoreFile().writeContents(folder.getRoot(), ["123", "abc"]);
-		String content = new File(folder.getRoot(), ".gitignore").text;
-		Assert.assertEquals("123" + System.lineSeparator + "abc" + System.lineSeparator, content);
+	void writeGitignoreFile() {
+		new GitignoreFile().writeContents(folder.getRoot(), ["123", "abc"])
+		String content = new File(folder.getRoot(), ".gitignore").text
+		assertThat(content, stringContainsInOrder(Arrays.asList("123","abc")))
 	}
 	
 	private void writeGitignore(String[] lines) {

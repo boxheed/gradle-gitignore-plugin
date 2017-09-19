@@ -14,22 +14,22 @@ class GitignorePluginTest {
 	private GitignorePlugin plugin
 
 	@Before
-	public void setup() {
-		project = ProjectBuilder.builder().build();
-		plugin = new GitignorePlugin();
+	void setup() {
+		project = ProjectBuilder.builder().build()
+		plugin = new GitignorePlugin()
 	}
 	
 	
 	@Test
-	public void basicPluginConfigurationTest() {
-		plugin.apply(project);
-		GitignorePluginExtension extension = project.extensions.findByName("gitignore");
-		Assert.assertTrue(extension instanceof GitignorePluginExtension);
-		List<String> ignores = extension.getIgnores();
-		Assert.assertNotNull(ignores);
-		Assert.assertTrue(ignores.isEmpty());
-		TaskContainer taskContainer = project.getTasks();
-		Assert.assertEquals(2, taskContainer.findAll().size());
+	void basicPluginConfigurationTest() {
+		plugin.apply(project)
+		GitignorePluginExtension extension = project.extensions.findByName("gitignore")
+		Assert.assertTrue(extension instanceof GitignorePluginExtension)
+		List<String> ignores = extension.getIgnores()
+		Assert.assertNotNull(ignores)
+		Assert.assertTrue(ignores.isEmpty())
+		TaskContainer taskContainer = project.getTasks()
+		Assert.assertEquals(2, taskContainer.findAll().size())
 	}
 	
 }
