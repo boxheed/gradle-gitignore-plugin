@@ -27,6 +27,11 @@ apply plugin: 'com.fizzpod.gitignore'
 
 //section for defining your ignore patterns.
 gitignore {
+
+	//flag whether to merge this into an existing 
+	//.gitignore file, defaults to false
+	merge false
+
     ignore 'bin'
     ignore 'build'
     ignore 'another'

@@ -4,3 +4,7 @@
 .settings
 bin
 build
+
+.idea/
+*.iml
+.vscode

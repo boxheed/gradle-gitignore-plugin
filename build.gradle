@@ -10,7 +10,7 @@ buildscript {
 		}
 	}
 	dependencies {
-			classpath ('com.fizzpod:gradle-plugin-opinion:5.0.1') {
+			classpath ('com.fizzpod:gradle-plugin-opinion:5.0.3') {
 				exclude group: 'com.fizzpod', module: 'gradle-gitignore-plugin'
 			}
     }
@@ -20,26 +20,26 @@ apply plugin: 'com.fizzpod.pater-build'
 apply from: 'buildSrc/build.gradle'
 
 sourceSets {
-    main {
-        java {
-            srcDir 'buildSrc/src/main/java'
-        }
-        resources {
-            srcDir 'buildSrc/src/main/resources'
-        }
+	main {
+	  java {
+      srcDir 'buildSrc/src/main/java'
+	  }
+	  resources {
+      srcDir 'buildSrc/src/main/resources'
+	  }
 		groovy {
-		    srcDir 'buildSrc/src/main/groovy'
+	    srcDir 'buildSrc/src/main/groovy'
 		}
 	}
 	test {
-        java {
-            srcDir 'buildSrc/src/test/java'
-        }
-        resources {
-            srcDir 'buildSrc/src/test/resources'
-        }
+	  java {
+      srcDir 'buildSrc/src/test/java'
+	  }
+	  resources {
+      srcDir 'buildSrc/src/test/resources'
+	  }
 		groovy {
-		    srcDir 'buildSrc/src/test/groovy'
+	    srcDir 'buildSrc/src/test/groovy'
 		}
 	}
 }
@@ -51,6 +51,8 @@ gitignore {
 	ignore '.settings'
 	ignore 'bin'
 	ignore 'build'
+	ignore '.idea/'
+	ignore '*.iml'
 }
 
 dependencies {
