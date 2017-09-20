@@ -40,7 +40,18 @@ class GitignoreFileTest {
 		String content = new File(folder.getRoot(), ".gitignore").text
 		assertThat(content, stringContainsInOrder(Arrays.asList("123","abc")))
 	}
-	
+
+	@Test
+	void testReadGitignoreFileWithMergeContent() {
+		writeGitignore("abc", "123")
+
+		new GitignoreFile().writeContents(folder.getRoot(), ["def", "123"], true)
+
+		def contents = new GitignoreFile().getContents(folder.root)
+		assertThat(contents, stringContainsInOrder(Arrays.asList("abc", "123", "def")))
+	}
+
+
 	private void writeGitignore(String[] lines) {
 		new File(folder.getRoot(), ".gitignore").withWriter { out ->
 			lines.each { out.println it }
