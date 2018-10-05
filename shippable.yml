@@ -22,7 +22,6 @@ build:
     - mkdir $HOME/.gradle; printenv | grep GRADLE_PROP | cut -d'=' -f 2- >> $HOME/.gradle/gradle.properties
     - ./gradlew clean build; if [ "$BRANCH" == "master" ]; then ./gradlew clean verifyRelease createRelease; git push --tags; ./gradlew clean build publishPlugins bintrayUpload; fi
 
-
   on_success:
     - source <(curl -s https://raw.githubusercontent.com/boxheed/shippable-scripts/master/java-on-success)
 #    - cp -R ./build/test-results/* ./shippable/testresults
