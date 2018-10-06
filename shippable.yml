@@ -15,6 +15,7 @@ build:
 #    - if [[ $SHIPPABLE_JDK_VERSION == "oraclejdk8" ]] ; then export JAVA_HOME="/usr/lib/jvm/java-8-oracle"; export PATH="$PATH:/usr/lib/jvm/java-8-oracle/bin"; export java_path="/usr/lib/jvm/java-8-oracle/jre/bin/java"; fi
 #    - update-alternatives --set java $java_path
     - java -version
+    - echo "org.gradle.daemon=true" > $HOME/.gradle/gradle.properties
 #    - mkdir -p shippable/testresults
 #    - mkdir -p shippable/codecoverage
 #    - mkdir -p shippable/artifacts
