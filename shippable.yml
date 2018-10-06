@@ -3,13 +3,9 @@ language: java
 jdk:
   - oraclejdk8
 
-
-
 build:
   ci:
     - source <(curl -s https://raw.githubusercontent.com/boxheed/shippable-scripts/master/java-build-ci-setup)
-    - mkdir $HOME/.gradle; printenv | grep GRADLE_PROP | cut -d'=' -f 2- >> $HOME/.gradle/gradle.properties
-    - echo "org.gradle.daemon=true" >> $HOME/.gradle/gradle.properties
     - ./gradlew clean build
     #; if [ "$BRANCH" == "master" ]; then ./gradlew clean verifyRelease createRelease; git push --tags; ./gradlew clean build publishPlugins bintrayUpload; fi
 
