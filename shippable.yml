@@ -7,7 +7,9 @@ build:
   ci:
     - source <(curl -s https://raw.githubusercontent.com/boxheed/shippable-scripts/1.0/java-build-ci-setup)
     - ./gradlew clean build
-    - if [ "$BRANCH" == "master" ]; then ./gradlew clean verifyRelease createRelease; git push --tags; ./gradlew clean build publishPlugins bintrayUpload; fi
+    - if [ "$BRANCH" == "$BRANCH" ]; then ./gradlew clean verifyRelease ; fi
+    #createRelease; 
+    #git push --tags; ./gradlew clean build publishPlugins bintrayUpload; fi
 
   on_success:
     - source <(curl -s https://raw.githubusercontent.com/boxheed/shippable-scripts/1.0/java-on-success)
