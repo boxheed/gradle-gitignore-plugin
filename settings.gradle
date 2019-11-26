@@ -4,5 +4,8 @@ include 'shared'
 include 'api'
 include 'services:webservice'
 */
+plugins {
+  id "com.gradle.enterprise" version "3.1"
+}
 
 rootProject.name = 'gradle-gitignore-plugin'
