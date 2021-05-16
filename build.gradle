@@ -1,16 +1,15 @@
 buildscript {
 	repositories {
 		mavenLocal()
-		jcenter()
 		maven {
-      url "https://plugins.gradle.org/m2/"
-    }
+            url "https://plugins.gradle.org/m2/"
+        }
 		maven {
-			url "https://dl.bintray.com/boxhead/maven/"
+			url "https://artifacts.fizzpod.com/public/mvn/"
 		}
 	}
 	dependencies {
-			classpath ('com.fizzpod:gradle-plugin-opinion:9.0.0') {
+			classpath ('com.fizzpod:gradle-plugin-opinion:10.0.6') {
 				exclude group: 'com.fizzpod', module: 'gradle-gitignore-plugin'
 			}
     }
@@ -22,10 +21,10 @@ apply from: 'buildSrc/build.gradle'
 sourceSets {
 	main {
 	  java {
-      srcDir 'buildSrc/src/main/java'
+      	srcDir 'buildSrc/src/main/java'
 	  }
 	  resources {
-      srcDir 'buildSrc/src/main/resources'
+      	srcDir 'buildSrc/src/main/resources'
 	  }
 		groovy {
 	    srcDir 'buildSrc/src/main/groovy'
@@ -33,10 +32,10 @@ sourceSets {
 	}
 	test {
 	  java {
-      srcDir 'buildSrc/src/test/java'
+      	srcDir 'buildSrc/src/test/java'
 	  }
 	  resources {
-      srcDir 'buildSrc/src/test/resources'
+      	srcDir 'buildSrc/src/test/resources'
 	  }
 		groovy {
 	    srcDir 'buildSrc/src/test/groovy'
@@ -60,13 +59,6 @@ dependencies {
 	api localGroovy()
 }
 
-bintray {
-	dryRun = false
-	publish = true
-	pkg {
-		labels = ['gradle', 'plugin', 'git', 'build', 'gitignore']
-	}
-}
 
 pluginBundle {
 
