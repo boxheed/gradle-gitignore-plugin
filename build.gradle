@@ -1,18 +1,17 @@
 buildscript {
-	repositories {
-		mavenLocal()
-		jcenter()
-		maven {
-      url "https://plugins.gradle.org/m2/"
+    repositories {
+        mavenLocal()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        maven {
+            url "https://artifacts.fizzpod.com/public/mvn/"
+        }
     }
-		maven {
-			url "https://dl.bintray.com/boxhead/maven/"
-		}
-	}
-	dependencies {
-			classpath ('com.fizzpod:gradle-plugin-opinion:9.0.0') {
-				exclude group: 'com.fizzpod', module: 'gradle-gitignore-plugin'
-			}
+    dependencies {
+        classpath ('com.fizzpod:gradle-plugin-opinion:10.0.6') {
+            exclude group: 'com.fizzpod', module: 'gradle-gitignore-plugin'
+        }
     }
 }
 
@@ -20,53 +19,46 @@ apply plugin: 'com.fizzpod.pater-build'
 apply from: 'buildSrc/build.gradle'
 
 sourceSets {
-	main {
-	  java {
-      srcDir 'buildSrc/src/main/java'
-	  }
-	  resources {
-      srcDir 'buildSrc/src/main/resources'
-	  }
-		groovy {
-	    srcDir 'buildSrc/src/main/groovy'
-		}
-	}
-	test {
-	  java {
-      srcDir 'buildSrc/src/test/java'
-	  }
-	  resources {
-      srcDir 'buildSrc/src/test/resources'
-	  }
-		groovy {
-	    srcDir 'buildSrc/src/test/groovy'
-		}
-	}
+    main {
+        java {
+            srcDir 'buildSrc/src/main/java'
+        }
+        resources {
+            srcDir 'buildSrc/src/main/resources'
+        }
+        groovy {
+            srcDir 'buildSrc/src/main/groovy'
+        }
+    }
+    test {
+        java {
+            srcDir 'buildSrc/src/test/java'
+        }
+        resources {
+            srcDir 'buildSrc/src/test/resources'
+        }
+        groovy {
+            srcDir 'buildSrc/src/test/groovy'
+        }
+    }
 }
 
 gitignore {
-	ignore '.gradle'
-	ignore '.classpath'
-	ignore '.project'
-	ignore '.settings'
-	ignore 'bin'
-	ignore 'build'
-	ignore '.idea/'
-	ignore '*.iml'
+    ignore '.gradle'
+    ignore '.classpath'
+    ignore '.project'
+    ignore '.settings'
+    ignore 'bin'
+    ignore 'build'
+    ignore '.idea/'
+    ignore '*.iml'
 }
 
 dependencies {
-	api gradleApi()
-	api localGroovy()
+    api gradleApi()
+    api localGroovy()
 }
 
-bintray {
-	dryRun = false
-	publish = true
-	pkg {
-		labels = ['gradle', 'plugin', 'git', 'build', 'gitignore']
-	}
-}
 
 pluginBundle {
 
@@ -74,10 +66,9 @@ pluginBundle {
   tags = ['gradle', 'plugin', 'git', 'build', 'gitignore']
 
   plugins {
-
-    plugin {
-      id = 'com.fizzpod.gitignore'
-      displayName = 'Gradle Gitignore plugin'
-    }
+        plugin {
+            id = 'com.fizzpod.gitignore'
+            displayName = 'Gradle Gitignore plugin'
+        }
   }
 }
