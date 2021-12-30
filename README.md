@@ -1,6 +1,4 @@
-[![Build Status](https://api.shippable.com/projects/54eda7bc5ab6cc13528dbc5c/badge?branchName=master)](https://app.shippable.com/projects/54eda7bc5ab6cc13528dbc5c/builds/latest)
-
-[![Download](https://api.bintray.com/packages/boxhead/gradle-plugins/gradle-gitignore-plugin/images/download.svg) ](https://bintray.com/boxhead/gradle-plugins/gradle-gitignore-plugin/_latestVersion)
+[![CircleCI](https://circleci.com/gh/boxheed/gradle-gitignore-plugin/tree/master.svg?style=shield)](https://circleci.com/gh/boxheed/gradle-gitignore-plugin/tree/master)
 
 
 # Gradle Gitignore Plugin
