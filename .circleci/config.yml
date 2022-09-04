@@ -40,7 +40,7 @@ jobs:
   publish:
     docker:
       # specify the version you desire here
-      - image: circleci/openjdk:8-jdk
+      - image: cimg/openjdk:8.0
     working_directory: ~/repo
     environment:
       # Customize the JVM maximum heap limit
