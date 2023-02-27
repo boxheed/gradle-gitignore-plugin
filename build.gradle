@@ -9,7 +9,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath ('com.fizzpod:gradle-plugin-opinion:15.0.1') {
+        classpath ('com.fizzpod:gradle-plugin-opinion:15.1.1') {
             exclude group: 'com.fizzpod', module: 'gradle-gitignore-plugin'
         }
     }
@@ -74,6 +74,6 @@ gradlePlugin {
     }
 }
 
-spotbugs {
-    ignoreFailures = true
-}
+//spotbugs {
+//    ignoreFailures = true
+//}
