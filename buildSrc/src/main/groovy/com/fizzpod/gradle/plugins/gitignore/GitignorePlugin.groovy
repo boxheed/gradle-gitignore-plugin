@@ -15,7 +15,7 @@ class GitignorePlugin implements Plugin<Project> {
 			GitignoreFile gitignoreFile = new GitignoreFile()
 			LOGGER.info(".gitignore contents before writing: ")
 			LOGGER.info(gitignoreFile.getContents(project.getRootDir()))
-			gitignoreFile.writeContents(project.getRootDir(), project.gitignore.ignores)
+			gitignoreFile.write(project.getRootDir(), project.gitignore)
 			LOGGER.info(".gitignore contents after writing: ")
 			LOGGER.info(gitignoreFile.getContents(project.getRootDir()))
 		}

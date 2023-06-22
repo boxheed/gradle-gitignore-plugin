@@ -1,7 +1,8 @@
 package com.fizzpod.gradle.plugins.gitignore;
 
 public class GitignorePluginExtension {
-	Collection<String> ignores = new ArrayList<String>();
+	Collection<String> ignores = new LinkedHashSet<String>();
+	Collection<String> urls = new LinkedHashSet<String>();
 	boolean merge = false
 
 	def merge(boolean merge){
@@ -12,5 +13,10 @@ public class GitignorePluginExtension {
 	def ignore(String ignore) {
 		ignores.add(ignore);
 		return this;
+	}
+
+	def url(String url) {
+		urls.add(url)
+		return this
 	}
 }
