@@ -45,14 +45,9 @@ sourceSets {
 }
 
 gitignore {
-    ignore '.gradle'
-    ignore '.classpath'
-    ignore '.project'
-    ignore '.settings'
-    ignore 'bin'
-    ignore 'build'
-    ignore '.idea/'
-    ignore '*.iml'
+    merge true
+    url 'https://raw.githubusercontent.com/github/gitignore/main/Gradle.gitignore'
+    url 'https://raw.githubusercontent.com/github/gitignore/main/Java.gitignore'
 }
 
 dependencies {
