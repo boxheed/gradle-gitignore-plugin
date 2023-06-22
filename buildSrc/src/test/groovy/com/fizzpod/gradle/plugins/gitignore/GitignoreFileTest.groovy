@@ -36,7 +36,9 @@ class GitignoreFileTest {
 	
 	@Test
 	void writeGitignoreFile() {
-		new GitignoreFile().writeContents(folder.getRoot(), ["123", "abc"])
+		def extension = new GitignorePluginExtension()
+		extension.ignore("123").ignore("abc")
+		new GitignoreFile().write(folder.getRoot(), extension)
 		String content = new File(folder.getRoot(), ".gitignore").text
 		assertThat(content, stringContainsInOrder(Arrays.asList("123","abc")))
 	}
@@ -44,10 +46,12 @@ class GitignoreFileTest {
 	@Test
 	void testReadGitignoreFileWithMergeContent() {
 		writeGitignore("abc", "123")
-
-		new GitignoreFile().writeContents(folder.getRoot(), ["def", "123"], true)
+		def extension = new GitignorePluginExtension()
+		extension.ignore("def").ignore("123").merge(true)
+		new GitignoreFile().write(folder.getRoot(), extension)
 
 		def contents = new GitignoreFile().getContents(folder.root)
+		println(contents)
 		assertThat(contents, stringContainsInOrder(Arrays.asList("abc", "123", "def")))
 	}
 

@@ -24,7 +24,7 @@ class GitignorePluginTest {
 		plugin.apply(project)
 		GitignorePluginExtension extension = project.extensions.findByName("gitignore")
 		Assert.assertTrue(extension instanceof GitignorePluginExtension)
-		List<String> ignores = extension.getIgnores()
+		Collection<String> ignores = extension.getIgnores()
 		Assert.assertNotNull(ignores)
 		Assert.assertTrue(ignores.isEmpty())
 		TaskContainer taskContainer = project.getTasks()
