@@ -23,10 +23,15 @@ class GitignoreFile {
         }
 
         ignoreFile.withWriterAppend { out ->
+            out.println ""
             extension.ignores.each { out.println it }
+            out.println ""
         }
 
         extension.urls.each { url ->
+            ignoreFile.withWriterAppend { out ->
+                out.println ""
+            }
             ignoreFile << new URL (url).getText()
         }
         dedupeLines(folder)
