@@ -1,13 +1,15 @@
+/* (C) 2024 */
+/* SPDX-License-Identifier: Apache-2.0 */
 package com.fizzpod.gradle.plugins.gitignore
-
-import org.junit.Rule
-import org.junit.Test
-import org.junit.rules.TemporaryFolder
 
 import static org.hamcrest.core.IsNull.nullValue
 import static org.hamcrest.text.IsEmptyString.isEmptyOrNullString
 import static org.hamcrest.text.StringContainsInOrder.stringContainsInOrder
 import static org.junit.Assert.assertThat
+
+import org.junit.Rule
+import org.junit.Test
+import org.junit.rules.TemporaryFolder
 
 class GitignoreFileTest {
 
