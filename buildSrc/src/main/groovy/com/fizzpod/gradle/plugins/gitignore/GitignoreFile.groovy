@@ -1,3 +1,5 @@
+/* (C) 2024 */
+/* SPDX-License-Identifier: Apache-2.0 */
 package com.fizzpod.gradle.plugins.gitignore
 
 import java.nio.charset.Charset
@@ -8,12 +10,12 @@ class GitignoreFile {
     public static final String FILE_NAME = ".gitignore"
 
     def getContents(File folder) {
-        def gitignoreFile = getIgnoreFile(folder);
-        def contents = null;
+        def gitignoreFile = getIgnoreFile(folder)
+        def contents = null
         if (gitignoreFile.exists()) {
-            contents = gitignoreFile.text;
+            contents = gitignoreFile.text
         }
-        return contents;
+        return contents
     }
 
     def write(File folder, def extension) {
@@ -42,7 +44,7 @@ class GitignoreFile {
     }
 
     def getIgnoreFile(def folder) {
-        return new File(folder, FILE_NAME);
+        return new File(folder, FILE_NAME)
     }
 
     def dedupeLines(File folder) {
